@@ -12,62 +12,13 @@
 
 #include "../incs/push_swap.h"
 
-t_stack	*ft_stack_penult(t_stack *stack)
+t_stack	*ft_stackrmv_front(t_stack *stack)
 {
-	while (stack)
-	{
-		if (!stack->next->next)
-			return (stack);
-		stack = stack->next;
-	}
-	return (stack);
-}
+	t_stack	*new;
 
-t_stack	*ft_stacklast(t_stack *stack)
-{
-	while (stack)
-	{
-		if (!stack->next)
-			return (stack);
-		stack = stack->next;
-	}
-	return (stack);
-}
-
-void	ft_stackadd_back(t_stack **stack, t_stack *new)
-{
-	t_stack	*temp;
-
-	if (!*stack)
-		*stack = new;
-	else
-	{
-		temp = ft_stacklast(*stack);
-		temp->next = new;
-	}
-}
-void	ft_stackadd_front(t_stack **stack, t_stack *new)
-{
-	new->next= *stack;
-	*stack = new;
-}
-
-void	ft_stackrmv_back(t_stack **stack)
-{
-	t_stack	*temp;
-	t_stack	*temp_stack;
-
-	temp_stack = *stack;
-	temp = ft_stack_penult(temp_stack);
-	temp->next = NULL;
-}
-void	ft_stackrmv_front(t_stack **stack)
-{
-	t_stack	*temp;
-
-	temp = *stack;
-	*stack = (*stack)->next;
-	free(temp);
+	new = stack->next
+	free(stack);
+	return (new);
 }
 
 t_stack	*ft_stacknew(int content)
@@ -81,6 +32,10 @@ t_stack	*ft_stacknew(int content)
 	new->next = NULL;
 	return (new);
 }
+/*void	ft_stackadd_back(t_stack **stack, t_stack *new)*/
+/*{*/
+/**/
+/*}*/
 
 t_stack	*stack_maker(char **list_char)
 {

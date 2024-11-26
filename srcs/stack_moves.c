@@ -22,27 +22,33 @@ void	ft_stack_swap(t_stack **stack)
 	stack_temp->content = stack_temp->next->content;
 	stack_temp->next->content = temp;
 }
-void	ft_stackadd_front(t_stack **stack, t_stack *new)
-{
-	new->next= *stack;
-	*stack = new;
-}
 
 void	ft_push_stack(t_stack **dest, t_stack **source)
 {
-	t_stack	*src_temp;
-	t_stack	*dest_temp;
-	/*t_stack *temp;*/
-
-	src_temp = *source;
-	dest_temp = *dest;
 	if (!*dest)
 	{
-		dest_temp = ft_stacknew(src_temp->content);
-		dest_temp->next = NULL;
+		*dest = ft_stacknew((*source)->content);
 	}
 	else
 	{
-		ft_stackadd_front(dest, ft_stacknew(src_temp->content));
+		ft_stackadd_front(dest, ft_stacknew((*source)->content));
 	}
+	ft_stackrmv_front(&(*source));
+}
+
+void	ft_rotate_stack(t_stack **stack)
+{
+	int	temp;
+
+	temp = (*stack)->content;
+	ft_stackrmv_front(&(*stack));
+	ft_stackadd_back(&(*stack), ft_stacknew(temp));
+}
+
+void	ft_rrotate_stack(t_stack **stack)
+{
+	int	temp;
+	temp = (*stack)->content;
+	ft_stackrmv_back(&(*stack));
+	ft_stackadd_front(&(*stack), ft_stacknew(temp));
 }
