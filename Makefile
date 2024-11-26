@@ -17,7 +17,7 @@ RM = rm -f
 LIBS = libs/libft/libft.a
 
 OBJS = $(SRCS:.c=.o)
-SRCS = srcs/main.c srcs/list_checker.c
+SRCS = srcs/main.c srcs/stack_checker.c srcs/stack_maker.c srcs/stack_moves.c
 all: $(NAME)
 
 deps:
@@ -33,5 +33,7 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 	$(MAKE) fclean -C ./libs/libft/
-
+	$(RM) gdb
+gdb: deps
+	$(CC) $(CFLAGS) $(SRCS) $(LIBS) -o gdb -g
 re: fclean all

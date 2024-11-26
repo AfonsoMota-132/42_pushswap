@@ -14,10 +14,32 @@
 
 int	main(int ac, char **av)
 {
+	char	**list;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+	t_stack	*start_stack_a;
+	t_stack	*start_stack_b;
+
 	if (ac >= 2)
 	{
 		check_int(ac, av);
-
+		list = ft_split(av[1], ' ');
+		stack_a = stack_maker(list);
+		start_stack_a = stack_a;
+		ft_stack_swap(&stack_a);
+		ft_printf("stack a\n");
+		while (stack_a)
+		{
+			ft_printf("%i\n", stack_a->content);
+			stack_a = stack_a->next;
+		}
+		ft_push_stack(&start_stack_b, &start_stack_a);
+		stack_b = start_stack_b;
+		while (stack_b)
+		{
+			ft_printf("%i\n", stack_b->content);
+			stack_b = stack_b->next;
+		}
 	}
 	else
 		ft_printf("Error!\nNot Enough Arguments.\n");

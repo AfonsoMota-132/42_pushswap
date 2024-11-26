@@ -25,7 +25,7 @@ int	check_int(int ac, char **av)
 		{
 			if (!ft_isdigit(av[i][j]) && av[i][j] != ' ')
 			{
-				ft_printf("Error\nA char othern than numbers was found!\n");
+				ft_printf("Error\nA char other than numbers was found!\n");
 				exit (1);
 			}
 			j++;

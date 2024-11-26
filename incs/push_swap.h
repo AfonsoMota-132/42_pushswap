@@ -13,9 +13,25 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+typedef struct t_stack {
+	int				content;
+	struct t_stack	*next;
+} t_stack;
+
 # include "../libs/libft/libft.h"
 
 //		list_checker		//
 
 int	check_int(int ac, char **av);
+
+//		Stack Maker			//
+
+t_stack *ft_stacknew(int content);
+t_stack	*stack_maker(char **list_char);
+
+//		Stack Moves			//
+
+void	ft_stack_swap(t_stack **stack);
+void	ft_push_stack(t_stack **dest, t_stack **source);
+
 #endif
