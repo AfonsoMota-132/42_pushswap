@@ -37,7 +37,42 @@ int	check_repeat(t_stack *stack)
 	}
 	return (0);
 }
-int	check_int(int ac, char **av)
+void	ft_stackchecker(int ac, char **av)
+{
+	if (ac == 2)
+	{
+		ft_check_int(ac, av);
+	}
+	else
+	{
+		ft_check_int(ac, av);
+		ft_check_space(ac, av);
+	}
+}
+int	ft_check_space(int	ac, char **av)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (++i < ac)
+	{
+		j = 0;
+		while (av[i][j] != '\0')
+		{
+			if (av[i][j] == ' ')
+			{
+				ft_printf("Error\nIf you use multiple arguments. ");
+				ft_printf("Please differ from using multiple numbers in 1\n");
+				ft_printf("And don't use unecessary spaces!\n");
+				exit (1);
+			}
+			j++;
+		}
+	}
+	return (0);
+}
+int	ft_check_int(int ac, char **av)
 {
 	int	i;
 	int	j;

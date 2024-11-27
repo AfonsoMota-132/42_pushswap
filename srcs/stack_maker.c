@@ -84,7 +84,7 @@ t_stack	*ft_stacknew(int content)
 	return (new);
 }
 
-t_stack	*stack_maker(char **list_char)
+t_stack	*ft_stack_maker(char **list_char)
 {
 	int		i;
 	t_stack	*stack;

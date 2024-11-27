@@ -14,41 +14,16 @@
 
 int	main(int ac, char **av)
 {
-	char	**list;
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-	t_stack	*start_stack_a;
-	t_stack	*start_stack_b;
+	t_data	*data;
 
 	if (ac >= 2)
 	{
-		check_int(ac, av);
-		list = ft_split(av[1], ' ');
-		start_stack_a = stack_maker(list);
-		/*ft_stack_swap(&start_stack_a);*/
-		/*ft_push_stack(&start_stack_b, &start_stack_a);*/
-		/*ft_push_stack(&start_stack_b, &start_stack_a);*/
-		/*ft_stack_swap(&start_stack_b);*/
-		/*ft_push_stack(&start_stack_a, &start_stack_b);*/
-		/*ft_rrotate_stack(&start_stack_a);*/
-		start_stack_b = ft_stacknew(0);
-
-		stack_b = start_stack_b;
-
-		stack_a = start_stack_a;
-		ft_printf("stack a\n");
-		while (stack_a)
-		{
-			ft_printf("%i\n", stack_a->content);
-			stack_a = stack_a->next;
-		}
-		ft_printf("stack b\n");
-		while (stack_b)
-		{
-			ft_printf("%i\n", stack_b->content);
-			stack_b = stack_b->next;
-		}
-		check_repeat(start_stack_a);
+		ft_stackchecker(ac, av);
+		if (ac == 2)
+			data->start_stack_a = ft_stack_maker(ft_split(av[1], ' '));
+		else
+			data->start_stack_a = ft_stack_maker((av + 1));
+		data->stack_a = data->start_stack_a;
 	}
 	else
 		ft_printf("Error!\nNot Enough Arguments.\n");
