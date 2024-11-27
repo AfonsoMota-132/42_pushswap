@@ -25,12 +25,13 @@ int	main(int ac, char **av)
 		check_int(ac, av);
 		list = ft_split(av[1], ' ');
 		start_stack_a = stack_maker(list);
-		/*ft_stack_swap(&start_stack_a);*/
-		ft_push_stack(&start_stack_b, &start_stack_a);
+		ft_stack_swap(&start_stack_a);
 		/*ft_push_stack(&start_stack_b, &start_stack_a);*/
+		ft_push_stack(&start_stack_b, &start_stack_a);
 		/*ft_stack_swap(&start_stack_b);*/
 		/*ft_push_stack(&start_stack_a, &start_stack_b);*/
-		ft_rrotate_stack(&start_stack_a);
+		/*ft_rrotate_stack(&start_stack_a);*/
+		/*start_stack_b = ft_stacknew(0);*/
 
 		stack_b = start_stack_b;
 

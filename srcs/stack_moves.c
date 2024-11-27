@@ -33,6 +33,7 @@ void	ft_push_stack(t_stack **dest, t_stack **source)
 	{
 		ft_stackadd_front(dest, ft_stacknew((*source)->content));
 	}
+	(*dest)->next = NULL;
 	ft_stackrmv_front(&(*source));
 }
 

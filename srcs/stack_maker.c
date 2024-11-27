@@ -39,7 +39,9 @@ void	ft_stackadd_back(t_stack **stack, t_stack *new)
 	t_stack	*temp;
 
 	if (!*stack)
+	{
 		*stack = new;
+	}
 	else
 	{
 		temp = ft_stacklast(*stack);
