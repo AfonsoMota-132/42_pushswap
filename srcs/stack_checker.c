@@ -12,6 +12,31 @@
 
 #include "../incs/push_swap.h"
 
+int	check_repeat(t_stack *stack)
+{
+	t_stack	*temp;
+
+	while (stack)
+	{
+		printf("a: %i\n", stack->content);
+		temp = stack->next;
+		while (temp)
+		{
+			if (temp->content == stack->content)
+			{
+				ft_printf("Equal!");
+				exit (0);
+			}
+			if (!temp->next)
+				break ;
+			temp = temp->next;
+		}
+		if(!stack->next)
+			break ;
+		stack = stack->next;
+	}
+	return (0);
+}
 int	check_int(int ac, char **av)
 {
 	int	i;

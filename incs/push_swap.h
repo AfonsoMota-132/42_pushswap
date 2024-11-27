@@ -20,9 +20,10 @@ typedef struct t_stack {
 
 # include "../libs/libft/libft.h"
 
-//		list_checker		//
+//		stack_checker		//
 
 int	check_int(int ac, char **av);
+int	check_repeat(t_stack *stack);
 
 //		Stack Maker			//
 
