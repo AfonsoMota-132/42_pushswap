@@ -84,25 +84,27 @@ t_stack	*ft_stacknew(int content)
 	return (new);
 }
 
-t_stack	*ft_stack_maker(char **list_char)
+t_data	*ft_stack_maker(char **list_char)
 {
 	int		i;
-	t_stack	*stack;
-	t_stack *stack_start;
+	t_data	*data;
 
-	stack_start = ft_stacknew(ft_atoi(list_char[0]));
-	if (!stack_start)
+	data = malloc(sizeof(t_data));
+	data->start_stack_a = ft_stacknew(ft_atoi(list_char[0]));
+	if (!data->start_stack_a)
 		return (NULL);
-	stack = stack_start;
+	data->stack_a = data->start_stack_a;
+	data->stack_a->id = -1;
 	i = 1;
 	while (list_char[i] != 0)
 	{
-		stack->next = ft_stacknew(ft_atoi(list_char[i]));
-		if (!stack->next)
+		data->stack_a->next = ft_stacknew(ft_atoi(list_char[i]));
+		if (!data->stack_a->next)
 			return (NULL); // Need to free everything but will do it later
-		stack = stack->next;
+		data->stack_a = data->stack_a->next;
+		data->stack_a->id = -1;
 		i++;
 	}
-	stack->next = NULL;
-	return (stack_start);
+	data->stack_a->next = NULL;
+	return (data);
 }

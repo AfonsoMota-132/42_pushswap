@@ -12,6 +12,19 @@
 
 #include "../incs/push_swap.h"
 
+int	ft_stacklen(t_stack *stack)
+{
+	int	len;
+
+	len = 0;
+	while (stack)
+	{
+		stack = stack->next;
+		len++;
+	}
+	return (len);
+}
+
 int	check_repeat(t_stack *stack)
 {
 	t_stack	*temp;
@@ -37,6 +50,7 @@ int	check_repeat(t_stack *stack)
 	}
 	return (0);
 }
+
 void	ft_stackchecker(int ac, char **av)
 {
 	if (ac == 2)
