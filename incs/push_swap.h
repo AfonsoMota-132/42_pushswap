@@ -44,8 +44,8 @@ void	ft_stackadd_front(t_stack **stack, t_stack *new);
 void	ft_stackrmv_front(t_stack **stack);
 void	ft_stackrmv_back(t_stack **stack);
 t_stack	*ft_stacklast(t_stack *stack);
-t_stack *ft_stacknew(int content);
 t_data	*ft_stack_maker(char **list_char);
+t_stack *ft_stacknew(int content);
 
 //		Stack Moves			//
 

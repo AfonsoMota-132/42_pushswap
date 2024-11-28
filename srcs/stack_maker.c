@@ -48,6 +48,7 @@ void	ft_stackadd_back(t_stack **stack, t_stack *new)
 		temp->next = new;
 	}
 }
+
 void	ft_stackadd_front(t_stack **stack, t_stack *new)
 {
 	new->next= *stack;

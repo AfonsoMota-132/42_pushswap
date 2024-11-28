@@ -66,9 +66,9 @@ void	ft_radix(t_data **data)
 			ft_printf("IDK1\n");
 			if ((*data)->stack_a->content >> bits & 1)
 			{
-				ft_printf("push: %i\n", (*data)->stack_a->content);
 				ft_push_stack(&(*data)->stack_b, &(*data)->stack_a);
-				ft_printf("stack b: %i\n", (*data)->stack_b->content);
+				if (!(*data)->start_stack_b)
+					(*data)->start_stack_b = (*data)->stack_b;
 			}
 			else
 			{
