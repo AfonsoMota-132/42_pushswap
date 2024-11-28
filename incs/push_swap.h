@@ -37,6 +37,7 @@ void	ft_stackchecker(int	ac, char **av);
 int	ft_check_int(int ac, char **av);
 int	ft_check_repeat(t_stack *stack);
 int	ft_check_space(int ac, char **av);
+
 //		Stack Maker			//
 
 void	ft_stackadd_back(t_stack **stack, t_stack *new);
@@ -48,6 +49,13 @@ t_data	*ft_stack_maker(char **list_char);
 t_stack *ft_stacknew(int content);
 
 //		Stack Moves			//
+//		Stack A				//
+
+void	ft_stack_swap_a(t_data **data);
+void	ft_stack_push_a(t_data **data);
+void	ft_stack_rotate_a(t_data **data);
+void	ft_stack_rrotate_a(t_data **data);
+
 
 void	ft_stack_swap(t_stack **stack);
 void	ft_push_stack(t_stack **dest, t_stack **source);

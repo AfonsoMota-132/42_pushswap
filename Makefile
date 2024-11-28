@@ -18,7 +18,7 @@ LIBS = libs/libft/libft.a
 
 OBJS = $(SRCS:.c=.o)
 SRCS = srcs/main.c srcs/stack_checker.c srcs/stack_maker.c srcs/stack_moves.c \
-	   srcs/radix.c
+	   srcs/radix.c srcs/stack_moves_a.c
 all: $(NAME)
 
 deps:
