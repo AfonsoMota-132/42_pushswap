@@ -18,12 +18,20 @@ int	main(int ac, char **av)
 
 	if (ac >= 2)
 	{
+		data = malloc(sizeof(t_data));
 		ft_stackchecker(ac, av);
 		if (ac == 2)
 			data->start_stack_a = ft_stack_maker(ft_split(av[1], ' '));
 		else
 			data->start_stack_a = ft_stack_maker((av + 1));
 		data->stack_a = data->start_stack_a;
+		while (data->stack_a)
+		{
+			ft_printf("%i\n", data->stack_a->content);
+			if (!data->stack_a->next)
+				return (0);
+			data->stack_a = data->stack_a->next;
+		}
 	}
 	else
 		ft_printf("Error!\nNot Enough Arguments.\n");
