@@ -20,9 +20,11 @@ int	ft_check_sort(t_data *data)
 		{
 			if (data->stack_a->content > data->stack_a->next->content)
 			{
-				ft_printf("a: %i  b: %i\n", data->stack_a->content, data->stack_a->next->content);
+				ft_printf("a: %i	b: %i\n", data->stack_a->content, data->stack_a->next->content);
 				return (1);
 			}
+			if (!data->stack_a->next->next)
+				break ;
 			data->stack_a = data->stack_a->next;
 		}
 	}
