@@ -14,15 +14,13 @@
 
 int	ft_check_sort(t_data *data)
 {
+	data->stack_a = data->start_stack_a;
 	if (data->stack_a)
 	{
 		while (data->stack_a)
 		{
 			if (data->stack_a->content > data->stack_a->next->content)
-			{
-				ft_printf("a: %i	b: %i\n", data->stack_a->content, data->stack_a->next->content);
 				return (1);
-			}
 			if (!data->stack_a->next->next)
 				break ;
 			data->stack_a = data->stack_a->next;
@@ -43,15 +41,12 @@ int	main(int ac, char **av)
 		if (ac == 2)
 			data = ft_stack_maker(ft_split(av[1], ' '));
 		else
-			data = ft_stack_maker((av + 1));	
+			data = ft_stack_maker((av + 1));
 		data->stack_a = data->start_stack_a;
 		data->size = ft_stacklen(data->start_stack_a);
-		/*ft_stack_swap_a(&data);*/
-		ft_stack_push_a(&data);
-		ft_stack_push_a(&data);
-		/*ft_stack_rotate_a(&data);*/
-		/*ft_stack_rrotate_a(&data);*/
+		ft_putid(&data);
 
+		ft_radix(&data);
 		data->stack_a = data->start_stack_a;
 		ft_printf("stack a\n");
 		while (data->stack_a)

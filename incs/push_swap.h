@@ -56,6 +56,11 @@ void	ft_stack_push_a(t_data **data);
 void	ft_stack_rotate_a(t_data **data);
 void	ft_stack_rrotate_a(t_data **data);
 
+//		Stack B				//
+
+
+void	ft_stack_push_b(t_data **data);
+void	ft_stack_swap_b(t_data **data);
 
 void	ft_stack_swap(t_stack **stack);
 void	ft_push_stack(t_stack **dest, t_stack **source);
