@@ -30,10 +30,17 @@ void	ft_stack_swap_b(t_data **data)
 void	ft_stack_push_b(t_data **data)
 {
 	(*data)->stack_b = (*data)->start_stack_b;
-	ft_stackadd_front(&(*data)->start_stack_a, ft_stacknew((*data)->stack_b->content));
-	(*data)->start_stack_a->id = (*data)->start_stack_b->id;
-	(*data)->stack_b = (*data)->start_stack_b->next;
-	ft_stackrmv_front(&(*data)->start_stack_b);
-	(*data)->start_stack_b = (*data)->stack_b;
+	if (!(*data)->start_stack_a)
+	{
+		(*data)->start_stack_a = (*data)->stack_b;
+		(*data)->start_stack_b = (*data)->stack_b->next;
+		(*data)->start_stack_a->next = NULL;
+	}
+	else
+	{
+		(*data)->stack_b = (*data)->stack_b->next;
+		ft_stackadd_front(&(*data)->start_stack_a, (*data)->start_stack_b);
+		(*data)->start_stack_b = (*data)->stack_b;
+	}
 	ft_stackadd_back(&(*data)->moves, ft_stacknew(5));
 }

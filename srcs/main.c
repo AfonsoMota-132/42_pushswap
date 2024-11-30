@@ -65,6 +65,7 @@ int	main(int ac, char **av)
 			data = ft_stack_maker((av + 1));
 		data->stack_a = data->start_stack_a;
 		data->moves = NULL;
+		data->start_stack_b = NULL;
 		ft_putid(&data);
 		ft_radix(&data);
 		ft_print_moves(data);
