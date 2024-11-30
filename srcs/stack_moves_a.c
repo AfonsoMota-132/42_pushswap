@@ -14,31 +14,28 @@
 
 void	ft_stack_swap_a(t_data **data)
 {
-	int	temp_content;
-	int	temp_id;
+	t_stack	*temp1;
+	t_stack *temp2;
 
-	(*data)->stack_a = (*data)->start_stack_a;
-	temp_content = (*data)->stack_a->content;
-	temp_id = (*data)->stack_a->id;
-	(*data)->stack_a->content = (*data)->stack_a->next->content;
-	(*data)->stack_a->id = (*data)->stack_a->next->id;
-	(*data)->stack_a->next->content = temp_content;
-	(*data)->stack_a->next->id = temp_id;
-	(*data)->start_stack_a = (*data)->stack_a;
-	ft_stackadd_back(&(*data)->moves, ft_stacknew(1));
+	temp1 = (*data)->start_stack_a;
+	temp2 = temp1->next;
+	temp1->next = temp2->next;
+	temp2->next = temp1;
+	(*data)->start_stack_a = temp2;
 }
 
 void	ft_stack_push_a(t_data **data)
 {
-	(*data)->stack_a = (*data)->start_stack_a;
 	if (!(*data)->start_stack_b)
 	{
 		(*data)->start_stack_b = ft_stacknew((*data)->stack_a->content);
 		(*data)->start_stack_b->next = NULL;
 	}
 	else
+	{
 		ft_stackadd_front(&(*data)->start_stack_b,
 			ft_stacknew((*data)->stack_a->content));
+	}
 	(*data)->start_stack_b->id = (*data)->start_stack_a->id;
 	(*data)->stack_a = (*data)->start_stack_a->next;
 	ft_stackrmv_front(&(*data)->start_stack_a);

@@ -47,4 +47,5 @@ visualizer:
 	cmake .. && \
 	make && \
 	./bin/visualizer
+
 re: fclean all
