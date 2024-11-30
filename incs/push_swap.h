@@ -15,19 +15,21 @@
 
 # include "../libs/libft/libft.h"
 
-typedef struct t_stack {
+
+typedef struct s_stack {
 	int				content;
 	int				id;
-	struct t_stack	*next;
-} t_stack;
+	struct s_stack	*next;
+}	t_stack;
 
 typedef	struct s_data {
 	t_stack	*stack_a;
 	t_stack *stack_b;
 	t_stack	*start_stack_a;
 	t_stack *start_stack_b;
+	t_stack	*moves;
 	int		size;
-} t_data;
+}	t_data;
 
 //		stack_checker		//
 
@@ -71,4 +73,10 @@ void	ft_rrotate_stack(t_stack **stack);
 
 int	ft_check_sort(t_data *data);
 void ft_radix(t_data **data);
+
+//		Free				//
+
+void	ft_free(t_data **data);
+void	ft_free_stack_a(t_data **data);
+void	ft_free_stack_b(t_data **data);
 #endif

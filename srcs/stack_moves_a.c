@@ -25,12 +25,11 @@ void	ft_stack_swap_a(t_data **data)
 	(*data)->stack_a->next->content = temp_content;
 	(*data)->stack_a->next->id = temp_id;
 	(*data)->start_stack_a = (*data)->stack_a;
+	ft_stackadd_back(&(*data)->moves, ft_stacknew(1));
 }
 
 void	ft_stack_push_a(t_data **data)
 {
-	/*int	temp_id;*/
-
 	(*data)->stack_a = (*data)->start_stack_a;
 	if (!(*data)->start_stack_b)
 	{
@@ -38,12 +37,13 @@ void	ft_stack_push_a(t_data **data)
 		(*data)->start_stack_b->next = NULL;
 	}
 	else
-		ft_stackadd_front(&(*data)->start_stack_b, ft_stacknew((*data)->stack_a->content));
-	(*data)->stack_b = (*data)->start_stack_b;
+		ft_stackadd_front(&(*data)->start_stack_b,
+			ft_stacknew((*data)->stack_a->content));
 	(*data)->start_stack_b->id = (*data)->start_stack_a->id;
 	(*data)->stack_a = (*data)->start_stack_a->next;
 	ft_stackrmv_front(&(*data)->start_stack_a);
 	(*data)->start_stack_a = (*data)->stack_a;
+	ft_stackadd_back(&(*data)->moves, ft_stacknew(4));
 }
 
 void	ft_stack_rotate_a(t_data **data)
@@ -60,6 +60,7 @@ void	ft_stack_rotate_a(t_data **data)
 	ft_stackadd_back(&(*data)->stack_a, ft_stacknew(temp_cont));
 	(*data)->start_stack_a = (*data)->stack_a;
 	ft_stacklast((*data)->stack_a)->id = temp_id;
+	ft_stackadd_back(&(*data)->moves, ft_stacknew(6));
 }
 
 void	ft_stack_rrotate_a(t_data **data)
@@ -76,4 +77,5 @@ void	ft_stack_rrotate_a(t_data **data)
 	ft_stackadd_front(&(*data)->stack_a, ft_stacknew(temp_cont));
 	(*data)->start_stack_a = (*data)->stack_a;
 	(*data)->stack_a->id = temp_id;
+	ft_stackadd_back(&(*data)->moves, ft_stacknew(9));
 }

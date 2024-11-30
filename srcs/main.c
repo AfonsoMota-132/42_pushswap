@@ -12,17 +12,34 @@
 
 #include "../incs/push_swap.h"
 
+void	ft_print_moves(t_data *data)
+{
+	while (data->moves)
+	{
+		if (data->moves->content == 6)
+			ft_printf("ra\n");
+		else if (data->moves->content == 5)
+			ft_printf("pa\n");
+		else if (data->moves->content == 4)
+			ft_printf("pb\n");
+		data->moves = data->moves->next;
+	}
+}
+
 int	ft_check_sort(t_data *data)
 {
+	int	id;
+
 	data->stack_a = data->start_stack_a;
 	if (data->stack_a)
 	{
+		id = 0;
 		while (data->stack_a)
 		{
-			if (data->stack_a->content > data->stack_a->next->content)
+			if (data->stack_a->id == id)
+				id++;
+			else
 				return (1);
-			if (!data->stack_a->next->next)
-				break ;
 			data->stack_a = data->stack_a->next;
 		}
 	}
@@ -31,36 +48,27 @@ int	ft_check_sort(t_data *data)
 }
 
 int	main(int ac, char **av)
-{ 
+{
 	t_data	*data;
+	char	**temp;
 
 	if (ac >= 2)
 	{
-		data = malloc(sizeof(t_data));
 		ft_stackchecker(ac, av);
 		if (ac == 2)
-			data = ft_stack_maker(ft_split(av[1], ' '));
+		{
+			temp = ft_split(av[1], ' ');
+			data = ft_stack_maker(temp);
+			ft_free_split(temp, data->size);
+		}
 		else
 			data = ft_stack_maker((av + 1));
 		data->stack_a = data->start_stack_a;
-		data->size = ft_stacklen(data->start_stack_a);
+		data->moves = NULL;
 		ft_putid(&data);
-
 		ft_radix(&data);
-		data->stack_a = data->start_stack_a;
-		ft_printf("stack a\n");
-		while (data->stack_a)
-		{
-			ft_printf("content: %i	id: %i\n", data->stack_a->content, data->stack_a->id);
-			data->stack_a = data->stack_a->next;
-		}	
-		data->stack_b = data->start_stack_b;
-		ft_printf("stack b\n");
-		while (data->stack_b)
-		{
-			ft_printf("content: %i	id: %i\n", data->stack_b->content, data->stack_b->id);
-			data->stack_b = data->stack_b->next;
-		}	
+		ft_print_moves(data);
+		ft_free(&data);
 	}
 	else
 		ft_printf("Error!\nNot Enough Arguments.\n");

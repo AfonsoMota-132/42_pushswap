@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afogonca <afogonca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/30 15:11:18 by afogonca          #+#    #+#             */
-/*   Updated: 2024/11/30 15:11:21 by afogonca         ###   ########.fr       */
+/*   Created: 2024/11/30 14:59:15 by afogonca          #+#    #+#             */
+/*   Updated: 2024/11/30 15:08:58 by afogonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *nptr)
+long	ft_atol(const char *str)
 {
-	int	num;
-	int	i;
-	int	mult;
+	long	num;
+	int		sign;
+	int		i;
 
-	mult = 1;
-	i = 0;
+	sign = 1;
 	num = 0;
-	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == ' ')
+	i = 0;
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
+		|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
 		i++;
-	if (nptr[i] == '-' || nptr[i] == '+')
+	if (str[i] == '-' || str[i] == '+')
 	{
-		if (nptr[i] == '-')
-			mult *= -1;
+		if (str[i] == '-')
+			sign *= -1;
 		i++;
 	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		num = (10 * num) + (nptr[i] - '0');
+		num = num * 10 + (str[i] - '0');
 		i++;
 	}
-	return (num * mult);
+	return (num * sign);
 }

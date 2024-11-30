@@ -44,30 +44,27 @@ void	ft_radix(t_data **data)
 {
 	int	bits;
 	int	i;
+	/*int	bits_max;*/
 
-	bits = 0;
+	bits = -1;
 	i = -1;
 	(*data)->stack_a = (*data)->start_stack_a;
-	while (ft_check_sort(*data))
+	while (ft_check_sort(*data) && ++bits < (*data)->size)
 	{
 		(*data)->stack_a = (*data)->start_stack_a;
 		while (++i < (*data)->size)
 		{
 			if ((*data)->stack_a->id >> bits & 1)
-				ft_stack_push_a(data);
-			else
 				ft_stack_rotate_a(data);
+			else
+				ft_stack_push_a(data);
 		}
 		(*data)->stack_b = (*data)->start_stack_b;
 		while ((*data)->stack_b)
 			ft_stack_push_b(data);
+		free((*data)->start_stack_b);
 		(*data)->stack_a = (*data)->start_stack_a;
 		i = -1;
-		bits++;
 	}
-	if (!ft_check_sort(*data))
-		ft_printf("Sorted!\n");
-	else
-		ft_printf("Not Sorted!\n");
-	(*data)->stack_a = (*data)->start_stack_a;	
+	(*data)->stack_a = (*data)->start_stack_a;
 }

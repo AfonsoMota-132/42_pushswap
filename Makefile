@@ -17,8 +17,9 @@ RM = rm -f
 LIBS = libs/libft/libft.a
 
 OBJS = $(SRCS:.c=.o)
-SRCS = srcs/main.c srcs/stack_checker.c srcs/stack_maker.c srcs/stack_moves.c \
-	   srcs/radix.c srcs/stack_moves_a.c srcs/stack_moves_b.c
+SRCS = srcs/main.c srcs/stack_checker.c srcs/stack_maker.c srcs/stack_maker2.c \
+	   srcs/stack_moves.c srcs/radix.c srcs/stack_moves_a.c srcs/stack_moves_b.c \
+	   srcs/ft_free.c
 all: $(NAME)
 
 deps:
@@ -37,4 +38,13 @@ fclean: clean
 	$(RM) gdb
 gdb: deps
 	$(CC) $(CFLAGS) $(SRCS) $(LIBS) -o gdb -g
+
+visualizer:
+	git clone https://github.com/o-reo/push_swap_visualizer.git && \
+	cd push_swap_visualizer && \
+	mkdir build && \
+	cd build && \
+	cmake .. && \
+	make && \
+	./bin/visualizer
 re: fclean all

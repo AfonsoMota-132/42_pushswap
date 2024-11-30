@@ -29,8 +29,13 @@ void	ft_stack_swap_b(t_data **data)
 
 void	ft_stack_push_b(t_data **data)
 {
+	t_stack	*temp;
+
 	(*data)->stack_b = (*data)->start_stack_b;
-	ft_stackadd_front(&(*data)->start_stack_a, ft_stacknew((*data)->stack_b->content));
+	temp = ft_stacknew((*data)->stack_b->content);
+	ft_stackadd_front(&(*data)->start_stack_a, temp);
+	free(temp);
+	(*data)->stack_a = (*data)->start_stack_a;
 	(*data)->start_stack_a->id = (*data)->start_stack_b->id;
 	(*data)->stack_b = (*data)->start_stack_b->next;
 	ft_stackrmv_front(&(*data)->start_stack_b);

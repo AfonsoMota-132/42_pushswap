@@ -1,21 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   optimize.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afogonca <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: afogonca <afogonca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 12:03:19 by afogonca          #+#    #+#             */
-/*   Updated: 2024/11/30 15:12:10 by afogonca         ###   ########.fr       */
+/*   Created: 2024/11/30 12:55:50 by afogonca          #+#    #+#             */
+/*   Updated: 2024/11/30 13:01:51 by afogonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	ft_toupper(int c)
+void	optimize(t_data **data)
 {
-	if (c >= 97 && c <= 122)
-		return (c - 32);
-	else
-		return (c);
 }
