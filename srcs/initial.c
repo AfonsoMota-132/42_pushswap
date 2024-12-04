@@ -71,7 +71,6 @@ t_data	*ft_initial_data(int ac, char **av)
 		ft_free_args(av);
 		exit (1);
 	}
-	ft_printf("before:\n");
 	data->stack_a = data->start_stack_a;
 	ft_free_args(av);
 	return (data);
