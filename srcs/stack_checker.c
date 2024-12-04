@@ -18,7 +18,6 @@ int	check_signs(char **list_char)
 	int	j;
 	int	check;
 
-
 	i = -1;
 	while (list_char[++i] != NULL)
 	{
@@ -72,7 +71,7 @@ int	ft_stackchecker(int ac, char **av, t_data *data)
 	if (ac == 2)
 	{
 		if (ft_check_int(ac, av) || data->size < 2
-		|| (av[1][1] == '\0' && av[1][0] == '-'))
+			|| (av[1][1] == '\0' && av[1][0] == '-'))
 			return (1);
 		temp = ft_split(av[1], ' ');
 		while (temp[i])
@@ -127,7 +126,7 @@ int	ft_check_int(int ac, char **av)
 		{
 			if (!ft_isdigit(av[i][j]) && av[i][j] != ' ' && av[i][j] != '-')
 			{
-				ft_printf("Error 1\n");
+				ft_printf("Error\n");
 				return (1);
 			}
 			j++;

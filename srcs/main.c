@@ -12,7 +12,7 @@
 
 #include "../incs/push_swap.h"
 
-void	ft_checksize(char **av)
+void	*ft_checksize(char **av)
 {
 	int	i;
 
@@ -22,10 +22,11 @@ void	ft_checksize(char **av)
 		if (ft_strlen(av[i]) > 11)
 		{
 			ft_printf("Error\n");
-			exit (1);
+			return (NULL);
 		}
 		i++;
 	}
+	return (0);
 }
 
 int	ft_sort(t_data **data)
@@ -45,7 +46,7 @@ int	ft_sort(t_data **data)
 	return (0);
 }
 
-void	ft_checkint(char **list_char)
+int	ft_checkint(char **list_char)
 {
 	long	content;
 	int		i;
@@ -57,10 +58,11 @@ void	ft_checkint(char **list_char)
 		if (content > 2147483647 || content < -2147483648)
 		{
 			ft_printf("Error\n");
-			exit (1);
+			return (1);
 		}
 		i++;
 	}
+	return (0);
 }
 
 int	ft_check_sort(t_data *data)
@@ -90,7 +92,12 @@ int	main(int ac, char **av)
 
 	if (ac >= 2)
 	{
+		has_sign_but_no_nbr(ac, av);
 		data = ft_initial_data(ac, av);
+		if (data)
+		{
+			ft_free(&data);
+		}
 		ft_putid(&data);
 		if (ft_sort(&data))
 		{

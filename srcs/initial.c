@@ -62,7 +62,11 @@ t_data	*ft_initial_data(int ac, char **av)
 	av = ft_trim_args(ac, av);
 	data = ft_initial(ac, av);
 	if (!data)
+	{
+		if (ac > 2)
+			ft_free_args(av);
 		exit (1);
+	}
 	data->stack_a = data->start_stack_a;
 	data->start_stack_b = NULL;
 	if (ft_stackchecker(ac, av, data) || check_repeat(data->stack_a))

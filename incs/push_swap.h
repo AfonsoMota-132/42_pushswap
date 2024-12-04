@@ -17,7 +17,7 @@
 
 typedef struct s_stack
 {
-	long				content;
+	long			content;
 	int				id;
 	struct s_stack	*next;
 }	t_stack;
@@ -37,15 +37,16 @@ t_data	*ft_initial_data(int ac, char **av);
 
 //		stack_checker		//
 
-void	ft_checksize(char **av);
+void	*ft_checksize(char **av);
 void	ft_putid(t_data **data);
 int		ft_stacklen(t_stack *stack);
 int		ft_stackchecker(int ac, char **av, t_data *data);
 int		ft_check_int(int ac, char **av);
 int		ft_check_repeat(t_stack *stack);
 int		ft_check_space(int ac, char **av);
-void	ft_checkint(char **list_char);
-int	check_repeat(t_stack *stack);
+int		ft_checkint(char **list_char);
+int		check_repeat(t_stack *stack);
+int		has_sign_but_no_nbr(int ac, char **av);
 
 //		Stack Maker			//
 
