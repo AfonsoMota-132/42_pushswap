@@ -87,11 +87,9 @@ int	ft_check_sort(t_data *data)
 int	main(int ac, char **av)
 {
 	t_data	*data;
-	int		i;
 
 	if (ac >= 2)
 	{
-		i = 0;
 		data = ft_initial_data(ac, av);
 		ft_putid(&data);
 		if (ft_sort(&data))
@@ -101,6 +99,4 @@ int	main(int ac, char **av)
 		}
 		ft_free(&data);
 	}
-	else
-		ft_printf("Error!\n");
 }
