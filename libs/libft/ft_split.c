@@ -101,7 +101,8 @@ char	**ft_free_split(char **strs, size_t seg)
 	size_t	i;
 
 	i = 0;
-	while (i < seg)
+	(void) seg;
+	while (strs[i])
 	{
 		free(strs[i]);
 		++i;

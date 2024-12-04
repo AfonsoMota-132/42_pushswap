@@ -38,7 +38,8 @@ t_data	*ft_initial(int ac, char **av)
 	{
 		temp = ft_split(av[1], ' ');
 		data = ft_stack_maker(temp);
-		ft_free_split(temp, data->size);
+		ft_printf("after2\n");
+		ft_free_split(temp, 0);
 	}
 	else if (ac == 2 && av[1][0] == '\0')
 	{
@@ -52,6 +53,8 @@ t_data	*ft_initial(int ac, char **av)
 			return (NULL);
 		data = ft_stack_maker((av + 1));
 	}
+	if (!data)
+		exit (1);
 	return (data);
 }
 
@@ -63,8 +66,8 @@ t_data	*ft_initial_data(int ac, char **av)
 	data = ft_initial(ac, av);
 	if (!data)
 	{
-		if (ac > 2)
-			ft_free_args(av);
+		ft_free(&data);
+		ft_free_args(av);
 		exit (1);
 	}
 	data->stack_a = data->start_stack_a;

@@ -118,6 +118,7 @@ int	ft_check_int(int ac, char **av)
 	int	i;
 	int	j;
 
+	ft_printf("before\n");
 	i = 0;
 	while (++i < ac)
 	{
@@ -132,5 +133,6 @@ int	ft_check_int(int ac, char **av)
 			j++;
 		}
 	}
+	ft_printf("after\n");
 	return (0);
 }
