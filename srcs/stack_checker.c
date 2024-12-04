@@ -67,7 +67,7 @@ int	check_repeat(t_stack *stack)
 	return (0);
 }
 
-int	ft_stackchecker(int ac, char **av)
+int	ft_stackchecker(int ac, char **av, t_data *data)
 {
 	char	**temp;
 	int		i;
@@ -75,7 +75,7 @@ int	ft_stackchecker(int ac, char **av)
 	i = 0;
 	if (ac == 2)
 	{
-		if (ft_check_int(ac, av))
+		if (ft_check_int(ac, av) || data->size < 2)
 			return (1);
 		temp = ft_split(av[1], ' ');
 		while (temp[i])

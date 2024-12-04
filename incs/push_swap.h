@@ -40,7 +40,7 @@ t_data	*ft_initial_data(int ac, char **av);
 void	ft_checksize(char **av);
 void	ft_putid(t_data **data);
 int		ft_stacklen(t_stack *stack);
-int		ft_stackchecker(int ac, char **av);
+int		ft_stackchecker(int ac, char **av, t_data *data);
 int		ft_check_int(int ac, char **av);
 int		ft_check_repeat(t_stack *stack);
 int		ft_check_space(int ac, char **av);
