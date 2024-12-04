@@ -64,4 +64,5 @@ void	ft_stackrmv_back(t_stack **stack)
 	temp = ft_stack_penult(temp_stack);
 	free(temp->next);
 	temp->next = NULL;
+	temp = NULL;
 }

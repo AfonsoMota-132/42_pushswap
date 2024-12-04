@@ -10,6 +10,8 @@
 #                                                                              #
 # **************************************************************************** #
 
+MAKE		= make -C
+
 NAME = push_swap
 CFLAGS = -Wall -Wextra -Werror
 CC = cc
@@ -19,23 +21,30 @@ LIBS = libs/libft/libft.a
 OBJS = $(SRCS:.c=.o)
 SRCS = srcs/main.c srcs/stack_checker.c srcs/stack_maker.c srcs/stack_maker2.c \
 	   srcs/radix.c srcs/stack_moves_a.c srcs/stack_moves_b.c \
-	   srcs/ft_free.c
-all: $(NAME)
+	   srcs/ft_free.c srcs/initial.c
+
+all: deps $(NAME)
 
 deps:
-	$(MAKE) -C ./libs/libft/
+	$(MAKE) ./libs/libft/
 
-$(NAME): deps $(OBJS)
+$(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBS) -o $(NAME)
+
+$(TEMP_PATH):
+	$(MKDIR_P) $(TEMP_PATH)
+	@echo "* $(YEL)Creating $(TEMP_PATH) folder:$(D) $(_SUCCESS)"
 
 clean:
 	$(RM) $(OBJS)
-	$(MAKE) clean -C ./libs/libft/
+	make clean -C ./libs/libft/
 
 fclean: clean
 	$(RM) $(NAME)
-	$(MAKE) fclean -C ./libs/libft/
+	make fclean -C ./libs/libft/
 	$(RM) gdb
+	rm -fr push_swap_visualizer
+
 gdb: deps
 	$(CC) $(CFLAGS) $(SRCS) $(LIBS) -o gdb -g
 
@@ -47,5 +56,3 @@ visualizer:
 	cmake .. && \
 	make && \
 	./bin/visualizer
-
-re: fclean all

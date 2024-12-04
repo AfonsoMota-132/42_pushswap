@@ -12,17 +12,34 @@
 
 #include "../incs/push_swap.h"
 
-int	ft_stacklen(t_stack *stack)
+int	check_signs(char **list_char)
 {
-	int	len;
+	int	i;
+	int	j;
+	int	check;
 
-	len = 0;
-	while (stack)
+
+	i = 0;
+	check = 0;
+	while (list_char[i] != NULL)
 	{
-		stack = stack->next;
-		len++;
+		j = 0;
+		while (!ft_isdigit(list_char[i][j]))
+		{
+			if ((list_char[i][j] == '-' || list_char[i][j] == '+')
+				&& check == 0)
+				check = 1;
+			else if ((list_char[i][j] == '-' || list_char[i][j] == '+')
+				&& check == 1)
+			{
+				ft_printf("Error\n");
+				return (1);
+			}
+
+			j++;
+		}
 	}
-	return (len);
+	return (0);
 }
 
 int	check_repeat(t_stack *stack)
@@ -31,39 +48,54 @@ int	check_repeat(t_stack *stack)
 
 	while (stack)
 	{
-		printf("a: %i\n", stack->content);
 		temp = stack->next;
 		while (temp)
 		{
 			if (temp->content == stack->content)
 			{
-				ft_printf("Equal!");
-				exit (0);
+				ft_printf("Error\n");
+				return (1);
 			}
 			if (!temp->next)
 				break ;
 			temp = temp->next;
 		}
-		if(!stack->next)
+		if (!stack->next)
 			break ;
 		stack = stack->next;
 	}
 	return (0);
 }
 
-void	ft_stackchecker(int ac, char **av)
+int	ft_stackchecker(int ac, char **av)
 {
+	char	**temp;
+	int		i;
+
+	i = 0;
 	if (ac == 2)
 	{
-		ft_check_int(ac, av);
+		if (ft_check_int(ac, av))
+			return (1);
+		temp = ft_split(av[1], ' ');
+		while (temp[i])
+			i++;
+		if (check_signs(temp))
+		{
+			ft_free_split(temp, i);
+			return (1);
+		}
+		ft_checksize(temp);
+		ft_free_split(temp, i);
+		return (0);
 	}
-	else
-	{
-		ft_check_int(ac, av);
-		ft_check_space(ac, av);
-	}
+	if (ft_check_int(ac, av) || ft_check_space(ac, av))
+		return (1);
+	ft_checksize((av + 1));
+	return (0);
 }
-int	ft_check_space(int	ac, char **av)
+
+int	ft_check_space(int ac, char **av)
 {
 	int	i;
 	int	j;
@@ -76,31 +108,37 @@ int	ft_check_space(int	ac, char **av)
 		{
 			if (av[i][j] == ' ')
 			{
-				ft_printf("Error\nIf you use multiple arguments. ");
-				ft_printf("Please differ from using multiple numbers in 1\n");
-				ft_printf("And don't use unecessary spaces!\n");
-				exit (1);
+				ft_printf("Error\n");
+				return (1);
 			}
 			j++;
 		}
 	}
 	return (0);
 }
+
 int	ft_check_int(int ac, char **av)
 {
 	int	i;
 	int	j;
-	
+
 	i = 0;
 	while (++i < ac)
 	{
 		j = 0;
 		while (av[i][j] != '\0')
 		{
-			if (!ft_isdigit(av[i][j]) && av[i][j] != ' ')
+			if (!ft_isdigit(av[i][j]) && av[i][j] != ' '
+				&& av[i][j] != '-' && av[i][j] != '+')
 			{
-				ft_printf("Error\nA char other than numbers was found!\n");
-				exit (1);
+				ft_printf("Error\n");
+				return (1);
+			}
+			else if ((ft_isdigit(av[i][j])
+				&& (av[i][j + 1] == '+' || av[i][j + 1] == '-')))
+			{
+				ft_printf("Error\n");
+				return (1);
 			}
 			j++;
 		}

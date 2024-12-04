@@ -12,17 +12,53 @@
 
 #include "../incs/push_swap.h"
 
-void	ft_print_moves(t_data *data)
+void	ft_checksize(char **av)
 {
-	while (data->moves)
+	int	i;
+
+	i = 0;
+	while (av[i] != NULL)
 	{
-		if (data->moves->content == 6)
-			ft_printf("ra\n");
-		else if (data->moves->content == 5)
-			ft_printf("pa\n");
-		else if (data->moves->content == 4)
-			ft_printf("pb\n");
-		data->moves = data->moves->next;
+		if (ft_strlen(av[i]) > 11)
+		{
+			ft_printf("Error\n");
+			exit (1);
+		}
+		i++;
+	}
+}
+
+void	ft_sort(t_data **data)
+{
+	if (!ft_check_sort(*data))
+		ft_printf("Already Sorted\n");
+	else if ((*data)->size == 2)
+		ft_stack_swap_a(data);
+	else if ((*data)->size == 3)
+		ft_sort3(data);
+	else if ((*data)->size == 4)
+		ft_sort_4(data, 0);
+	else if ((*data)->size == 5)
+		ft_sort5(data);
+	else
+		ft_radix(data);
+}
+
+void	ft_checkint(char **list_char)
+{
+	long	content;
+	int		i;
+
+	i = 0;
+	while (list_char[i] != NULL)
+	{
+		content = ft_atol(list_char[i]);
+		if (content > 2147483647 || content < -2147483648)
+		{
+			ft_printf("Error\n");
+			exit (1);
+		}
+		i++;
 	}
 }
 
@@ -50,27 +86,16 @@ int	ft_check_sort(t_data *data)
 int	main(int ac, char **av)
 {
 	t_data	*data;
-	char	**temp;
+	int		i;
 
 	if (ac >= 2)
 	{
-		ft_stackchecker(ac, av);
-		if (ac == 2)
-		{
-			temp = ft_split(av[1], ' ');
-			data = ft_stack_maker(temp);
-			ft_free_split(temp, data->size);
-		}
-		else
-			data = ft_stack_maker((av + 1));
-		data->stack_a = data->start_stack_a;
-		data->moves = NULL;
-		data->start_stack_b = NULL;
+		i = 0;
+		data = ft_initial_data(ac, av);
 		ft_putid(&data);
-		ft_radix(&data);
-		ft_print_moves(data);
+		ft_sort(&data);
 		ft_free(&data);
 	}
 	else
-		ft_printf("Error!\nNot Enough Arguments.\n");
+		ft_printf("Error!\n");
 }

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../incs/push_swap.h"
+
 void	ft_free_stack_a(t_data **data)
 {
 	if ((*data)->start_stack_a)
@@ -23,7 +24,6 @@ void	ft_free_stack_a(t_data **data)
 		}
 		free((*data)->start_stack_a);
 	}
-
 }
 
 void	ft_free_stack_b(t_data **data)
@@ -39,20 +39,10 @@ void	ft_free_stack_b(t_data **data)
 		free((*data)->start_stack_b);
 	}
 }
+
 void	ft_free(t_data **data)
 {
-	t_stack	*stack;
 	ft_free_stack_a(data);
 	ft_free_stack_b(data);
-	if ((*data)->moves)
-	{
-		while ((*data)->moves)
-		{
-			stack = (*data)->moves;
-			(*data)->moves = (*data)->moves->next;
-			free(stack);
-		}
-		free((*data)->moves);
-	}
 	free((*data));
 }

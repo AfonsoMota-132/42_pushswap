@@ -24,23 +24,23 @@ void	ft_stack_swap_b(t_data **data)
 	(*data)->stack_b->id = (*data)->stack_b->next->id;
 	(*data)->stack_b->next->content = temp_content;
 	(*data)->stack_b->next->id = temp_id;
-	ft_stackadd_back(&(*data)->moves, ft_stacknew(2));
 }
 
 void	ft_stack_push_b(t_data **data)
 {
-	(*data)->stack_b = (*data)->start_stack_b;
+	t_stack	*temp2;
+
+	if (!((*data)->start_stack_a))
+	{
+		(*data)->start_stack_a = NULL;
+		return ;
+	}
+	(*data)->stack_a = (*data)->start_stack_a;
+	temp2 = ((*data)->start_stack_a)->next;
+	(*data)->stack_a->next = (*data)->start_stack_b;
+	(*data)->start_stack_a = temp2;
 	if (!(*data)->start_stack_a)
-	{
-		(*data)->start_stack_a = (*data)->stack_b;
-		(*data)->start_stack_b = (*data)->stack_b->next;
-		(*data)->start_stack_a->next = NULL;
-	}
-	else
-	{
-		(*data)->stack_b = (*data)->stack_b->next;
-		ft_stackadd_front(&(*data)->start_stack_a, (*data)->start_stack_b);
-		(*data)->start_stack_b = (*data)->stack_b;
-	}
-	ft_stackadd_back(&(*data)->moves, ft_stacknew(5));
+		(*data)->start_stack_a = NULL;
+	(*data)->start_stack_b = (*data)->stack_a;
+	ft_printf("pb\n");
 }

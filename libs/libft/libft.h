@@ -108,5 +108,7 @@ char	*ft_bufferupdt(char *buffer);
 
 char	*ft_chrjoin(char const *str, char const chr);
 long	ft_atol(const char *str);
+char	**ft_trim_args(int argc, char **argv);
+void	ft_free_args(char **args);
 
 #endif
