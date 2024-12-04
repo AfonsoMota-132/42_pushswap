@@ -44,5 +44,6 @@ void	ft_free(t_data **data)
 {
 	ft_free_stack_a(data);
 	ft_free_stack_b(data);
-	free((*data));
+	if (data)
+		free((*data));
 }

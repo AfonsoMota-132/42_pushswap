@@ -52,8 +52,6 @@ t_data	*ft_stack_maker(char **list_char)
 	t_data	*data;
 
 	data = malloc(sizeof(t_data));
-	if (ft_checkint(list_char))
-		return (NULL);
 	data->start_stack_a = ft_stacknew(ft_atoi(list_char[0]));
 	if (!data->start_stack_a)
 		return (NULL);

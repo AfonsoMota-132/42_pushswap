@@ -47,6 +47,7 @@ int		ft_check_space(int ac, char **av);
 int		ft_checkint(char **list_char);
 int		check_repeat(t_stack *stack);
 int		has_sign_but_no_nbr(int ac, char **av);
+int		ft_check_null(int ac, char **av);
 
 //		Stack Maker			//
 
