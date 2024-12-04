@@ -19,12 +19,12 @@ int	check_signs(char **list_char)
 	int	check;
 
 
-	i = 0;
+	i = -1;
 	check = 0;
-	while (list_char[i] != NULL)
+	while (list_char[++i] != NULL)
 	{
-		j = 0;
-		while (!ft_isdigit(list_char[i][j]))
+		j = -1;
+		while (!ft_isdigit(list_char[i][++j]))
 		{
 			if ((list_char[i][j] == '-' || list_char[i][j] == '+')
 				&& check == 0)
@@ -35,7 +35,6 @@ int	check_signs(char **list_char)
 				ft_printf("Error\n");
 				return (1);
 			}
-
 			j++;
 		}
 	}
