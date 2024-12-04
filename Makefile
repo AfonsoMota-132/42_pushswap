@@ -48,6 +48,8 @@ fclean: clean
 gdb: deps
 	$(CC) $(CFLAGS) $(SRCS) $(LIBS) -o gdb -g
 
+re: fclean all
+
 visualizer:
 	git clone https://github.com/o-reo/push_swap_visualizer.git && \
 	cd push_swap_visualizer && \
